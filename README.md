@@ -1,6 +1,6 @@
 # Ex.No: 05  IMPLEMENTATION OF TIME SERIES ANALYSIS AND DECOMPOSITION
 ### Date: 30/9/2025
-
+### Register Number: 212223230105
 
 ### AIM:
 To Illustrates how to perform time series analysis and decomposition on the monthly average temperature of a city/country and for airline passengers.
@@ -19,15 +19,15 @@ import matplotlib.pyplot as plt
 from statsmodels.tsa.seasonal import seasonal_decompose
 import pandas as pd
 
-data = pd.read_csv('Crypto Data Since 2015.csv',parse_dates=['Date'],index_col='Date')
+data = pd.read_csv('Clean_Dataset.csv', index_col=0)
 
-decomposition = seasonal_decompose(data['Bitcoin (USD)'], model='additive',period=12)
+decomposition = seasonal_decompose(data['price'], model='additive', period=12)
 
 plt.figure(figsize=(12, 12))
 decomposition.plot()
 
 plt.subplot(411)
-plt.plot(data['Bitcoin (USD)'], label='Monthly Rate')
+plt.plot(data['price'], label='Monthly Rate')
 plt.legend(loc='upper left')
 plt.title('Monthly Rate')
 
@@ -49,28 +49,10 @@ plt.title('Residual Plot')
 plt.tight_layout()
 plt.show()
 
-
 ```
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ### OUTPUT:
-<img width="946" height="670" alt="image" src="https://github.com/user-attachments/assets/1c22460c-e057-4f07-8726-4fc1b94cecb8" />
-
-
+<img width="888" height="568" alt="image" src="https://github.com/user-attachments/assets/4ae4851f-b01f-4cfd-a083-1d31f460879d" />
 
 
 ### RESULT:
