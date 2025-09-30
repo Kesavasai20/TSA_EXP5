@@ -1,5 +1,5 @@
 # Ex.No: 05  IMPLEMENTATION OF TIME SERIES ANALYSIS AND DECOMPOSITION
-### Date: 
+### Date: 30/9/2025
 
 
 ### AIM:
@@ -13,7 +13,44 @@ To Illustrates how to perform time series analysis and decomposition on the mont
 5. Display the overall results.
 
 ### PROGRAM:
+```py
+import numpy as np
+import matplotlib.pyplot as plt
+from statsmodels.tsa.seasonal import seasonal_decompose
+import pandas as pd
 
+data = pd.read_csv('Crypto Data Since 2015.csv',parse_dates=['Date'],index_col='Date')
+
+decomposition = seasonal_decompose(data['Bitcoin (USD)'], model='additive',period=12)
+
+plt.figure(figsize=(12, 12))
+decomposition.plot()
+
+plt.subplot(411)
+plt.plot(data['Bitcoin (USD)'], label='Monthly Rate')
+plt.legend(loc='upper left')
+plt.title('Monthly Rate')
+
+plt.subplot(412)
+plt.plot(decomposition.trend, label='Trend', color='orange')
+plt.legend(loc='upper left')
+plt.title('Linear Trend Plot')
+
+plt.subplot(413)
+plt.plot(decomposition.seasonal, label='Seasonal', color='green')
+plt.legend(loc='upper left')
+plt.title('Seasonality Plot')
+
+plt.subplot(414)
+plt.plot(decomposition.resid, label='Residual', color='red')
+plt.legend(loc='upper left')
+plt.title('Residual Plot')
+
+plt.tight_layout()
+plt.show()
+
+
+```
 
 
 
@@ -31,19 +68,8 @@ To Illustrates how to perform time series analysis and decomposition on the mont
 
 
 ### OUTPUT:
-FIRST FIVE ROWS:
+<img width="946" height="670" alt="image" src="https://github.com/user-attachments/assets/1c22460c-e057-4f07-8726-4fc1b94cecb8" />
 
-
-
-PLOTTING THE DATA:
-
-SEASONAL PLOT REPRESENTATION :
-
-
-
-TREND PLOT REPRESENTATION :
-
-OVERAL REPRESENTATION:
 
 
 
